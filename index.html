@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0c"><title>MiniFlix</title>
+<link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg"><link rel="stylesheet" href="styles.css"></head>
+<body>
+<div id="fx"></div>
+<header id="nav"><div class="logo">MINI<b>FLIX</b></div>
+<nav id="tabs"><button data-f="all" class="on">Inicio</button><button data-f="movie">Películas</button><button data-f="series">Series</button></nav>
+<input id="q" type="search" placeholder="Buscar título o género…"><select id="th" title="Temporada"><option value="auto">Automático por fecha</option><option value="normal">Normal (Dorado)</option><option value="navidad">Navidad / Nochebuena</option><option value="nyear">Año Nuevo</option><option value="reyes">Día de Reyes</option></select><button id="bImp" class="btn gold">＋ Importar</button></header>
+<main id="main"></main>
+<!-- Detalle película/serie -->
+<div class="modal" id="mDet"><div class="box" id="det"></div></div>
+<!-- Reproductor -->
+<div class="modal" id="mPl"><div class="box player" id="pl">
+<video id="v" playsinline webkit-playsinline preload="metadata"></video>
+<div id="rs" hidden></div>
+<div class="ctl"><input type="range" id="seek" min="0" max="1000" value="0">
+<div class="r"><button id="pp">▶</button><button id="bk">⏪ 10</button><button id="fw">10 ⏩</button><span id="tm">0:00</span><b id="pt"></b>
+<button id="nx" hidden>Siguiente ⏭</button><button id="fs">⛶</button><button id="pc">✕</button></div></div></div></div>
+<!-- Agregar contenido -->
+<div class="modal" id="mImp"><div class="box"><button class="x" data-close>✕</button><h2>Agregar contenido</h2>
+<form id="fm">
+<input name="title" placeholder="Título" required>
+<div class="two"><select name="type"><option value="movie">Película</option><option value="series">Serie</option></select><input name="year" type="number" placeholder="Año"></div>
+<div class="two"><input name="genre" placeholder="Género"><input name="quality" placeholder="Calidad (Full HD 1080p)"></div>
+<div id="fSer" hidden><div class="two"><input name="s" type="number" min="1" placeholder="Temporada"><input name="e" type="number" min="1" placeholder="Episodio"></div>
+<div class="two"><input name="et" placeholder="Título del episodio"><input name="dur" type="number" placeholder="Minutos"></div></div>
+<textarea name="syn" rows="3" placeholder="Sinopsis"></textarea>
+<label>Video desde tu dispositivo<input type="file" name="vf" accept="video/*"></label>
+<input name="src" placeholder="o URL / ruta del video (media/pelicula.mp4)">
+<label>Portada desde tu dispositivo<input type="file" name="cf" accept="image/*"></label>
+<input name="cu" placeholder="o URL / ruta de portada">
+<button class="btn gold">Guardar ficha</button></form>
+<div class="tools"><button class="btn" id="bEx">⬇ Exportar catalogo.json</button>
+<label class="btn">⬆ Importar JSON<input type="file" id="jIn" accept=".json" hidden></label>
+<label class="btn">🔗 Revincular archivos locales<input type="file" id="rl" multiple accept="video/*" hidden></label>
+<button class="btn" id="bCp">📋 Copiar JSON</button></div>
+<p class="mut" style="margin-top:10px;font-size:12px">Los videos locales se vinculan por nombre de archivo: al reabrir la app pulsa «Revincular» y elígelos de nuevo.</p>
+</div></div>
+<div id="toast"></div>
+<script src="db.js"></script><script src="app.js"></script>
+</body></html>
